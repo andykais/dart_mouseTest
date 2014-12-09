@@ -1,16 +1,14 @@
 import 'dart:html';
+CanvasElement canvas = document.querySelector('#BasicCanvasCode');
+CanvasRenderingContext2D context = canvas.getContext('2d');
 
 void main() {
-  querySelector("#sample_text_id")
-      ..text = "Click me!"
-      ..onClick.listen(reverseText);
+  setColor('#008000');
+//  canvas.style.backgroundColor = "black";
+  canvas.onClick.listen(mouseTester);
+}
+void setColor(String color) {
+  context.fillStyle = color;
+  context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-void reverseText(MouseEvent event) {
-  var text = querySelector("#sample_text_id").text;
-  var buffer = new StringBuffer();
-  for (int i = text.length - 1; i >= 0; i--) {
-    buffer.write(text[i]);
-  }
-  querySelector("#sample_text_id").text = buffer.toString();
-}
